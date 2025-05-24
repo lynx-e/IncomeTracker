@@ -22,7 +22,7 @@ public class IncomeTracker {
 
     // addEntry() method prompts user to fill in Income Entry fields
 
-    private void addEntry() {
+    public void addEntry() {
         Scanner input = new Scanner(System.in);
         int year, month, day;
         // get date input from user
@@ -46,7 +46,7 @@ public class IncomeTracker {
 
         // format date
         LocalDate date = LocalDate.of(year, month, day);
-        String formattedDate = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 
         // prompt user to begin inputting earnings for formattedDate
         System.out.println("Enter total service earnings for " + formattedDate);
