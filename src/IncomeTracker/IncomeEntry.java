@@ -154,14 +154,19 @@ public class IncomeEntry {
     }
 
     // GET PAY PERIOD METHOD
-   public String getPayPeriod() {
-        int day = Integer.parseInt(date.split("-")[2]); // YYYY-MM-DD
-       if (day >=1 && day <= 15) {
-           return "Pay Period 1 (1st-15th)";
-       } else {
-           return "Pay Period 2 (16th-End)";
-       }
-   }
+    public String getPayPeriod() {
+        // Assumes date format is "dd-MM-yyyy"
+        String[] parts = this.date.split("-");
+        int day = Integer.parseInt(parts[1]); // Get the "dd" part
+
+        if (day >= 1 && day <= 15) {
+            return "Pay Period 1 (1st - 15th)";
+        } else if (day >= 16 && day <= 31) {
+            return "Pay Period 2 (16th - End)";
+        } else {
+            return "Invalid date, try again";
+        }
+    }
 
 
 

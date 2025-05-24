@@ -18,8 +18,6 @@ public class IncomeTracker {
         return entryList;
     }
 
-
-
     // addEntry() method prompts user to fill in Income Entry fields
 
     public void addEntry() {
@@ -73,6 +71,8 @@ public class IncomeTracker {
 
         // confirm entry to user
         System.out.println("Entry for " + formattedDate + " added successfully!\n" +
+                "Net tips: $" + netTips + "\n" +
+                "Total income: $" + totalIncome + "\n" +
                 "Take home pay: $" + takeHomePay);
     } // END addEntry();
 
@@ -95,22 +95,9 @@ public class IncomeTracker {
             System.out.println("Invalid choice. Enter 1 or 2");
             return; // END
         }
-    } // END viewEntriesByPayPeriod()
 
-    // getEntriesByPayPeriod() will display results based on entry
-    public ArrayList<IncomeEntry> getEntriesByPayPeriod(String period) {
-        ArrayList<IncomeEntry> resultList = new ArrayList<>();
-
-        for (IncomeEntry entry : entryList) {
-            if (entry.getPayPeriod().equals(period)) {
-                resultList.add(entry);
-            }
-        }
-
-        // Get matching entries from the list
         ArrayList<IncomeEntry> results = getEntriesByPayPeriod(period);
 
-// Check if results are empty
         if (results.isEmpty()) {
             System.out.println("No entries found for that pay period.");
         } else {
@@ -121,6 +108,17 @@ public class IncomeTracker {
                         " | Tips: $" + entry.getTips() +
                         " | Fee: $" + entry.getCleaningFee() +
                         " | Take-Home: $" + entry.getTakeHomePay());
+            }
+        }
+    } // END viewEntriesByPayPeriod()
+
+    // getEntriesByPayPeriod() will display results based on entry
+    public ArrayList<IncomeEntry> getEntriesByPayPeriod(String period) {
+        ArrayList<IncomeEntry> resultList = new ArrayList<>();
+
+        for (IncomeEntry entry : entryList) {
+            if (entry.getPayPeriod().equals(period)) {
+                resultList.add(entry);
             }
         }
 
@@ -167,10 +165,5 @@ public class IncomeTracker {
                 " | Total Tips: $" + totalNetTips + "\n" +
                 " | Total Cleaning Fee: $" + totalCleaningFee + "\n" +
                 " | Total Take Home Pay: $" + totalTakeHomePay);
-
-
     } // END calculateTotals()
-
-
-
 }
